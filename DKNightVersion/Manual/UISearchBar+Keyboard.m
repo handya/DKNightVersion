@@ -51,14 +51,20 @@
     UISearchBar *obj = [self dk_init];
     if (self.dk_manager.supportsKeyboard && [self.dk_manager.themeVersion isEqualToString:DKThemeVersionNight]) {
 
-#ifdef __IPHONE_7_0
+#ifdef __IPHONE_13_0
+        UITextField *searchField = obj.searchTextField;
+        searchField.keyboardAppearance = UIKeyboardAppearanceDark;
+#elif __IPHONE_7_0
         UITextField *searchField = [obj valueForKey:@"_searchField"];
         searchField.keyboardAppearance = UIKeyboardAppearanceDark;
 #else
         obj.keyboardAppearance = UIKeyboardAppearanceAlert;
 #endif
     } else {
-#ifdef __IPHONE_7_0
+#ifdef __IPHONE_13_0
+        UITextField *searchField = obj.searchTextField;
+        searchField.keyboardAppearance = UIKeyboardAppearanceDefault;
+#elif __IPHONE_7_0
         UITextField *searchField = [obj valueForKey:@"_searchField"];
         searchField.keyboardAppearance = UIKeyboardAppearanceDefault;
 #else
@@ -72,14 +78,20 @@
 - (void)night_updateColor {
     [super night_updateColor];
     if (self.dk_manager.supportsKeyboard && [self.dk_manager.themeVersion isEqualToString:DKThemeVersionNight]) {
-#ifdef __IPHONE_7_0
+#ifdef __IPHONE_13_0
+        UITextField *searchField = self.searchTextField;
+        searchField.keyboardAppearance = UIKeyboardAppearanceDark;
+#elif __IPHONE_7_0
         UITextField *searchField = [self valueForKey:@"_searchField"];
         searchField.keyboardAppearance = UIKeyboardAppearanceDark;
 #else
         self.keyboardAppearance = UIKeyboardAppearanceAlert;
 #endif
     } else {
-#ifdef __IPHONE_7_0
+#ifdef __IPHONE_13_0
+        UITextField *searchField = self.searchTextField;
+        searchField.keyboardAppearance = UIKeyboardAppearanceDefault;
+#elif __IPHONE_7_0
         UITextField *searchField = [self valueForKey:@"_searchField"];
         searchField.keyboardAppearance = UIKeyboardAppearanceDefault;
 #else
